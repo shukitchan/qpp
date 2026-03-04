@@ -20,4 +20,4 @@ jobs:
 
       - uses: oss-review-toolkit/ort-ci-github-action@v1.1.0
         with:
-          run: "analyzer,scanner,reporter"
+          run: "analyzer,reporter"
