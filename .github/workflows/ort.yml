@@ -1,0 +1,23 @@
+name: ORT (license scan)
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  ort:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Configure git to use HTTPS instead of SSH
+        run: git config --global url.https://github.com/.insteadOf ssh://git@github.com/
+
+      - uses: actions/checkout@v5
+
+      - uses: oss-review-toolkit/ort-ci-github-action@v1.1.0
+        with:
+          run: "analyzer,scanner,reporter"
