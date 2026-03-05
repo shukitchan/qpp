@@ -21,12 +21,5 @@ jobs:
       - uses: oss-review-toolkit/ort-ci-github-action@v1.1.0
         id: ort
         with:
-          run: "analyzer,reporter"
-
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: ort-reports
-          path: ${{ steps.ort.outputs.results-path }}
-          if-no-files-found: warn
-          retention-days: 14
+          allow-dynamic-versions: 'true'
+          run: "analyzer,reporter,upload-results"
